@@ -15,7 +15,7 @@ user_xp = {}
 current_question = {}
 
 
-# ---------------- START MENU ----------------
+#START_MENU
 @bot.message_handler(commands=['start'])
 def start(message):
     keyboard = ReplyKeyboardMarkup(resize_keyboard=True)
@@ -32,7 +32,7 @@ def start(message):
     )
 
 
-# ---------------- LESSON ----------------
+#LESSON
 @bot.message_handler(func=lambda m: m.text == "📚 Words")
 def lesson(message):
     word = random.choice(words)
@@ -44,7 +44,7 @@ def lesson(message):
     )
 
 
-# ---------------- CHECK ANSWER ----------------
+#CHECK_ANSWER
 @bot.message_handler(func=lambda m: m.text not in ["📚 Words", "🧠 My progress"])
 def check_answer(message):
     chat_id = message.chat.id
@@ -68,7 +68,7 @@ def check_answer(message):
         )
 
 
-# ---------------- PROGRESS ----------------
+#PROGRESS
 @bot.message_handler(func=lambda m: m.text == "🧠 My progress")
 def progress(message):
     xp = user_xp.get(message.chat.id, 0)
@@ -79,7 +79,7 @@ def progress(message):
     )
 
 
-# ---------------- RUN ----------------
+#RUN
 bot.infinity_polling()
 
 
